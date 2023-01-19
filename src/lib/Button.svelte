@@ -13,8 +13,15 @@
     padding: 0.8rem;
     border: none;
     border-radius: 0;
-    box-shadow: 0 0 0 1px #ccc;
     cursor: pointer;
+    background-color: #eee;
+    border-radius: 0.3rem;
+  }
+
+  @media (min-width: 40rem) {
+    button {
+      flex-grow: 1;
+    }
   }
 
   button:hover {
@@ -22,20 +29,12 @@
   }
 
   button.selected {
-    background-color: #ccc;
-  }
-  
-  button:first-child {
-    border-top-left-radius: 0.3rem;
-    border-bottom-left-radius: 0.3rem;
-  }
-
-  button:last-child {
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
+    background-color: white;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.15);
   }
 
   button > :global(*) {
     display: block;
+    margin-inline: auto;
   }
 </style>

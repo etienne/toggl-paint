@@ -8,7 +8,10 @@
 
   export let projects = Array();
   export let currentTool = '';
+  export let currentProject = 0;
   export let setTool = (tool = '') => {};
+  export let setProject = (id = 0) => {};
+
   let showProjectList = false;
 
   function toggleProjectList() {
@@ -29,7 +32,7 @@
       <Button mobileOnly action={toggleProjectList}>No project selected</Button>
     </li>
   </menu>
-  <ProjectList {projects} visibleOnMobile={showProjectList}/>
+  <ProjectList {projects} {setProject} {currentProject} {currentTool} visibleOnMobile={showProjectList}/>
 </header>
 
 <style>
