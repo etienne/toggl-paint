@@ -1,0 +1,52 @@
+<script>
+	import Button from "./Button.svelte";
+	import ProjectList from "./ProjectList.svelte";
+  import SegmentedControl from "./SegmentedControl.svelte";
+  import Eraser from "$lib/icons/Eraser.svelte";
+	import PaintBucket from "./icons/PaintBucket.svelte";
+	import Eyedropper from "./icons/Eyedropper.svelte";
+
+  export let projects = Array();
+  export let currentTool = '';
+  export let setTool = (tool = '') => {};
+  let showProjectList = false;
+
+  function toggleProjectList() {
+    showProjectList = !showProjectList;
+  }
+</script>
+
+<header>
+  <menu>
+    <li>
+      <SegmentedControl>
+        <Button selected={!['eraser', 'paintBucket'].includes(currentTool)} action={() => setTool('eyeDropper')}><Eyedropper/></Button>
+        <Button selected={currentTool == 'eraser'} action={() => setTool('eraser')}><Eraser/></Button>
+        <Button selected={currentTool == 'paintBucket'} action={() => setTool('paintBucket')}><PaintBucket/></Button>
+      </SegmentedControl>
+    </li>
+    <li>
+      <Button mobileOnly action={toggleProjectList}>No project selected</Button>
+    </li>
+  </menu>
+  <ProjectList {projects} visibleOnMobile={showProjectList}/>
+</header>
+
+<style>
+  header {
+    background-color: white;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+  }
+
+  menu {
+    display: flex;
+    gap: 1rem;
+  }
+
+  @media (min-width: 40rem) {
+    menu {
+      flex-direction: column;
+    }    
+  }
+</style>
