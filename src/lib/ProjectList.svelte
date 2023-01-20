@@ -24,6 +24,7 @@
 
 <style>
   ul {
+    margin-top: 1rem;
     display: none;
     flex-direction: column;
     gap: 1px;

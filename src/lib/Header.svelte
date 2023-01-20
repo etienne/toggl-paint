@@ -28,8 +28,14 @@
         <Button selected={currentTool == 'paintBucket'} action={() => setTool('paintBucket')}><PaintBucket/></Button>
       </SegmentedControl>
     </li>
-    <li>
-      <Button mobileOnly action={toggleProjectList}>No project selected</Button>
+    <li class="projectSelector">
+      <Button wide={true} action={toggleProjectList}>
+        {#if currentProject === 0}
+          No project selected
+        {:else}
+          {projects.find(p => p.id == currentProject).name}
+        {/if}
+      </Button>
     </li>
   </menu>
   <ProjectList {projects} {setProject} {currentProject} {currentTool} visibleOnMobile={showProjectList}/>
@@ -47,9 +53,17 @@
     gap: 1rem;
   }
 
+  li.projectSelector {
+    flex-grow: 1;
+  }
+
   @media (min-width: 40rem) {
     menu {
       flex-direction: column;
-    }    
+    }
+
+    li.projectSelector {
+      display: none;
+    }
   }
 </style>

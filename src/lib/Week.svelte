@@ -1,9 +1,14 @@
 <script>
 	import Hour from "./Hour.svelte";
+
+  export let id = 0;
+  export let date = new Date();
+
+  let dateString = date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long' });
 </script>
 
 <article>
-  <h2>Week of</h2>
+  <h2>Semaine du {dateString}</h2>
   <ul>
     {#each Array(28) as _, index (index)}
     <li>
@@ -15,7 +20,7 @@
 
 <style>
   h2 {
-    font-size: 1rem;
+    font-size: 0.85rem;
     margin-bottom: 0.5rem;
   }
 
@@ -23,5 +28,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 1px;
+    border-radius: 0.5rem;
+    overflow: hidden;
   }
 </style>
