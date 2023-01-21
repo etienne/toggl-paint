@@ -20,18 +20,11 @@ body, button, input {
 body {
   margin: 0;
   height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr;
 }
 
 @media (min-width: 40rem) {
   html {
     font-size: 18px;
-  }
-
-  body {
-    grid-template-rows: auto;
-    grid-template-columns: 16rem 1fr;
   }
 }
 

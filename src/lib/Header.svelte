@@ -1,6 +1,5 @@
 <script>
 	import Button from "./Button.svelte";
-	import ProjectList from "./ProjectList.svelte";
   import SegmentedControl from "./SegmentedControl.svelte";
   import Eraser from "$lib/icons/Eraser.svelte";
 	import PaintBucket from "./icons/PaintBucket.svelte";
@@ -10,13 +9,7 @@
   export let currentTool = '';
   export let currentProject = 0;
   export let setTool = (tool = '') => {};
-  export let setProject = (id = 0) => {};
-
-  let showProjectList = false;
-
-  function toggleProjectList() {
-    showProjectList = !showProjectList;
-  }
+  export let toggleProjectList = () => {};
 </script>
 
 <header>
@@ -38,14 +31,13 @@
       </Button>
     </li>
   </menu>
-  <ProjectList {projects} {setProject} {currentProject} {currentTool} visibleOnMobile={showProjectList}/>
 </header>
 
 <style>
   header {
     background-color: white;
     box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05);
-    padding: 1rem;
+    padding: 0.7rem 1rem;
   }
 
   menu {
@@ -58,8 +50,14 @@
   }
 
   @media (min-width: 40rem) {
+    header {
+      grid-area: header;
+    }
+
     menu {
       flex-direction: column;
+      width: fit-content;
+      margin-inline: auto;
     }
 
     li.projectSelector {

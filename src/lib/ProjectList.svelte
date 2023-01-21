@@ -28,6 +28,7 @@
     display: none;
     flex-direction: column;
     gap: 1px;
+    padding-inline: 1rem;
   }
 
   ul.visibleOnMobile {

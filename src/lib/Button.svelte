@@ -11,7 +11,7 @@
 
 <style>
   button {
-    padding: 0.8rem;
+    padding: calc(1px + 0.6rem);
     border: none;
     border-radius: 0;
     cursor: pointer;
@@ -19,12 +19,6 @@
     border-radius: 0.3rem;
     white-space: nowrap;
     overflow: hidden;
-  }
-
-  @media (min-width: 40rem) {
-    button {
-      flex-grow: 1;
-    }
   }
 
   button:hover {

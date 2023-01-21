@@ -6,8 +6,9 @@
   div {
     display: flex;
     background-color: #eee;
-    border-radius: 0.5rem;
-    padding: 0.2rem;
+    border-radius: 0.4rem;
+    padding: 1px;
+    width: fit-content;
   }
 
   div > :global(*) {

@@ -46,7 +46,7 @@
 
   span.swatch {
     display: inline-block;
-    width: 0.85rem;
+    width: 0.75rem;
     margin-top: 0.2rem;
     aspect-ratio: 1/1;
     border-radius: 0.1rem;
