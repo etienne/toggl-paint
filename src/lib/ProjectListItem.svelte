@@ -1,13 +1,17 @@
 <script>
+  import { currentProject, currentTool } from '$lib/stores/stores';
+
   export let name = '';
   export let color = '#000000';
-  export let selected = false;
-  export let select = () => {};
+  export let id = 0;
+
+  $: selected = id === $currentProject;
 
   function toggleSelection() {
     selected = !selected;
     if (selected) {
-      select();
+      $currentProject = id;
+      $currentTool = 'paintBucket';
     }
   }
 

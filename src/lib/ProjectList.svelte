@@ -1,23 +1,12 @@
 <script>
+  import { activeProjects, showProjectList } from '$lib/stores/stores';
 	import ProjectListItem from "./ProjectListItem.svelte";
-
-  export let projects = Array();
-  export let currentProject = 0;
-  export let currentTool = '';
-  export let visibleOnMobile = false;
-  export let setProject = (id = 0) => {};
-
-  let paintBucketIsActive = false;
-  $: paintBucketIsActive = currentTool == 'paintBucket';
-  let activeProjects = Array();
-  activeProjects = projects.filter(p => p.active);
 </script>
 
-
-<ul class:visibleOnMobile>
-  {#each activeProjects as p}
+<ul class:visibleOnMobile={showProjectList}>
+  {#each $activeProjects as p}
     <li>
-      <ProjectListItem name={p.name} color={p.color} selected={paintBucketIsActive && (currentProject == p.id)} select={() => {setProject(p.id)}}/>
+      <ProjectListItem name={p.name} color={p.color} id={p.id}/>
     </li>  
   {/each}
 </ul>
