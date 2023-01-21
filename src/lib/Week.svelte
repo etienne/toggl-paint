@@ -12,7 +12,7 @@
   <ul>
     {#each Array(28) as _, index (index)}
     <li>
-      <Hour/>
+      <Hour week={id} {index}/>
     </li>
   	{/each}
   </ul>

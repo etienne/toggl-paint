@@ -8,15 +8,14 @@
     date.setHours(0, 0, 0, 0);
     date.setDate(date.getDate() - (date.getDay() || 7) + offset + 1 + (index * 7));
     let id = date.valueOf();
-    let dateString = date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long' });
     return {id, date};
   });
 </script>
 <main>
   <ul>
-    {#each weeks as {id, date}}
+    {#each weeks as {id: weekId, date}}
     <li>
-      <Week {id} {date}/>
+      <Week id={weekId} {date}/>
     </li>
     {/each}
   </ul>
