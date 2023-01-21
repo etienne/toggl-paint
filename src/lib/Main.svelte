@@ -11,8 +11,6 @@
     let dateString = date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long' });
     return {id, date};
   });
-
-  console.log(weeks);
 </script>
 <main>
   <ul>

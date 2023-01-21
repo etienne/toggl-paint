@@ -23,12 +23,6 @@ body {
 }
 
 @media (min-width: 40rem) {
-  html {
-    font-size: 18px;
-  }
-}
-
-@media (min-width: 40rem) {
   .mobileOnly {
     display: none;
   }

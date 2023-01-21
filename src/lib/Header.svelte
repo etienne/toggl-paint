@@ -38,6 +38,8 @@
     background-color: white;
     box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05);
     padding: 0.7rem 1rem;
+    position: sticky;
+    top: 0;
   }
 
   menu {
