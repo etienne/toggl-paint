@@ -1,5 +1,5 @@
 <script>
-  import { activeProjects, currentProject, currentTool, showProjectList } from '$lib/stores/stores';
+  import { activeProjects, currentProjectId, currentTool, showProjectList } from '$lib/stores/stores';
 
 	import Button from "./Button.svelte";
   import SegmentedControl from "./SegmentedControl.svelte";
@@ -19,10 +19,10 @@
     </li>
     <li class="projectSelector">
       <Button wide={true} action={() => $showProjectList = !$showProjectList}>
-        {#if $currentProject === 0}
+        {#if $currentProjectId === 0}
           No project selected
         {:else}
-          {$activeProjects.find(p => p.id == $currentProject).name}
+          {$activeProjects?.find(p => p.id === $currentProjectId).name}
         {/if}
       </Button>
     </li>
