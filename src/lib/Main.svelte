@@ -1,4 +1,5 @@
 <script>
+  import { currentTool } from "./stores/stores";
 	import Week from "./Week.svelte";
 
   let showThisWeek = true;
@@ -11,7 +12,7 @@
     return {id, date};
   });
 </script>
-<main>
+<main class={$currentTool}>
   <ul>
     {#each weeks as {id: weekId, date}}
     <li>

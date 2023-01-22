@@ -3,18 +3,21 @@
 
 	import Button from "./Button.svelte";
   import SegmentedControl from "./SegmentedControl.svelte";
-  import Eraser from "$lib/icons/Eraser.svelte";
-	import PaintBucket from "./icons/PaintBucket.svelte";
-	import Eyedropper from "./icons/Eyedropper.svelte";
 </script>
 
 <header>
   <menu>
     <li>
       <SegmentedControl>
-        <Button selected={$currentTool == 'eyeDropper'} action={() => $currentTool = 'eyeDropper'}><Eyedropper/></Button>
-        <Button selected={$currentTool == 'eraser'} action={() => $currentTool = 'eraser'}><Eraser/></Button>
-        <Button selected={$currentTool == 'paintBucket'} action={() => $currentTool = 'paintBucket'}><PaintBucket/></Button>
+        <Button selected={$currentTool == 'eyedropper'} action={() => $currentTool = 'eyedropper'}>
+          <img src="/eyedropper.svg" alt="eyedropper Tool">
+        </Button>
+        <Button selected={$currentTool == 'eraser'} action={() => $currentTool = 'eraser'}>
+          <img src="/eraser.svg" alt="Eraser Tool">
+        </Button>
+        <Button selected={$currentTool == 'paintBucket'} action={() => $currentTool = 'paintBucket'}>
+          <img src="/paintBucket.svg" alt="Paint Bucket Tool">
+        </Button>
       </SegmentedControl>
     </li>
     <li class="projectSelector">
@@ -41,6 +44,10 @@
   menu {
     display: flex;
     gap: 1rem;
+  }
+
+  img {
+    pointer-events: none;
   }
 
   li.projectSelector {

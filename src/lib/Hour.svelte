@@ -7,7 +7,6 @@
   $: color = $projects.find(p => p.id === $weeks[week]?.[index])?.color;
 
   function handleClick() {
-    console.log($currentTool);
     switch ($currentTool) {
       case 'paintBucket':
         if ($weeks[week]) {
@@ -39,11 +38,29 @@
     border: 0;
     background-color: #f0f0f0;
     aspect-ratio: 1/1;
-    cursor: pointer;
+  }
+
+  button::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
     transition: all 0.05s;
   }
 
-  button:hover {
-    background-color: #ddd;
+  :global(main.eyedropper) button {
+    cursor: url('/eyedropper.svg') 2 17, pointer;
+  }
+
+  :global(main.paintBucket) button {
+    cursor: url('/paintBucket.svg') 16 15, pointer;
+  }
+
+  :global(main.eraser) button {
+    cursor: url('/eraser.svg') 6 13, pointer;
+  }
+
+  button:hover::after {
+    background-color: rgba(0, 0, 0, 0.07);
   }
 </style>

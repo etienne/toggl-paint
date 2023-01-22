@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>eraser</title>
+    <g id="eraser" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M3.08578644,10.9142136 L8.91421356,5.08578644 C9.28928632,4.71071368 9.79799415,4.5 10.3284271,4.5 L15.5,4.5 C16.6045695,4.5 17.5,5.3954305 17.5,6.5 L17.5,7.67157288 C17.5,8.20200585 17.2892863,8.71071368 16.9142136,9.08578644 L11.0857864,14.9142136 C10.7107137,15.2892863 10.2020059,15.5 9.67157288,15.5 L4.5,15.5 C3.3954305,15.5 2.5,14.6045695 2.5,13.5 L2.5,12.3284271 C2.5,11.7979941 2.71071368,11.2892863 3.08578644,10.9142136 Z" id="Path-2-Copy-2" stroke="#000000" fill="#FFFFFF"></path>
+        <polyline id="Line-3-Copy-2" stroke="#000000" stroke-linecap="round" points="4.5 11.5 10.5 11.5 10.5 13.5"></polyline>
+        <line x1="10.5" y1="11.5" x2="15.5" y2="6.5" id="Line-4-Copy-2" stroke="#000000" stroke-linecap="round"></line>
+    </g>
+</svg>
