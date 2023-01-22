@@ -13,3 +13,4 @@ export const currentProject = derived(
 export const currentTool = writable('paintBucket');
 export const showProjectList = writable(false);
 export const weeks = writable(Object());
+export const isDragging = writable(false);

@@ -1,12 +1,13 @@
 <script>
-  import { weeks, currentProjectId, projects, currentTool } from '$lib/stores/stores';
+  import { weeks, currentProjectId, projects, currentTool, isDragging } from '$lib/stores/stores';
 
   export let week = 0;
   export let index = 0;
 
   $: color = $projects.find(p => p.id === $weeks[week]?.[index])?.color;
 
-  function handleClick() {
+  function handleMouseDown() {
+    $isDragging = true;
     switch ($currentTool) {
       case 'paintBucket':
         if ($weeks[week]) {
@@ -26,10 +27,20 @@
         }
         break;
     }
-  }  
+  }
+
+  function handleMouseEnter() {
+    if ($isDragging) {
+      handleMouseDown();
+    }
+  }
 </script>
 
-<button on:click={handleClick} style={color ? `background-color: ${color}` : null}></button>
+<button
+  on:mousedown={handleMouseDown}
+  on:mouseenter={handleMouseEnter}
+  style={color ? `background-color: ${color}` : null}>
+</button>
 
 <style>
   button {
