@@ -39,6 +39,7 @@
     padding: 0.7rem 1rem;
     position: sticky;
     top: 0;
+    border-bottom: 1px solid #f3f3f3;
   }
 
   menu {
