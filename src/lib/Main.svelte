@@ -35,7 +35,7 @@
 
   @media (min-width: 40rem) {
     main {
-      padding: 1.5rem 3rem;
+      padding: 1.5rem;
     }
 
     ul {

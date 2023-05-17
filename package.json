@@ -26,6 +26,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"toggl-track": "0.7.5"
+		"toggl-client": "3.5.0"
 	}
 }

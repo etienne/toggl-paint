@@ -1,9 +1,11 @@
 <script>
   import { currentProjectId, currentTool } from '$lib/stores/stores';
+	import TaskList from './TaskList.svelte';
 
   export let name = '';
   export let color = '#000000';
   export let id = 0;
+  export let tasks = Array();
 
   $: selected = id === $currentProjectId;
 
@@ -17,41 +19,32 @@
 
 </script>
 
-<button on:click={toggleSelection} class:selected style={(selected || null) && `background-color: ${color}`}>
+<h2>
   <span class="swatch" style="background-color: {color}"></span>
   {name}
-</button>
+</h2>
+
+{#if tasks.length}
+  <TaskList tasks={tasks}/>
+{/if}
 
 <style>
-  button {
-    cursor: pointer;
+  h2 {
     display: flex;
-    align-items: start;
-    width: 100%;
-    text-align: left;
+    font-weight: normal;
+    font-size: 0.75rem;
+    text-transform: uppercase;
     gap: 0.5rem;
-    border: none;
-    font-size: 0.8rem;
-    line-height: 1.2rem;
-    background-color: transparent;
-    border-radius: 0.3rem;
-    padding: 0.3rem 0.6rem;
-    text-overflow: ellipsis;
-  }
-
-  button:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  button.selected {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.75);
+    align-items: baseline;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
   }
 
   span.swatch {
+    position: relative;
+    top: 2px;
     display: inline-block;
     width: 0.75rem;
-    margin-top: 0.2rem;
     aspect-ratio: 1/1;
     border-radius: 0.1rem;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);

@@ -10,6 +10,21 @@ export const currentProject = derived(
     console.log(a);
   }
 );
+export const tasks = writable(Object());
+export const projectsWithTasks = derived(
+  [projects, tasks],
+  ([$p, $t]) => {
+    let projects = Array();
+    $p.forEach(p => {
+      let tasks = $t.data?.filter(t => t.project_id === p.id);
+      if (tasks?.length) {
+        p.tasks = tasks;
+        projects.push(p);
+      }
+    });
+    return projects;
+  }
+);
 export const currentTool = writable('paintBucket');
 export const showProjectList = writable(false);
 export const weeks = writable(Object());

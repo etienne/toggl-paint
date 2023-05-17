@@ -9,6 +9,10 @@ html {
   box-sizing: border-box;
 }
 
+h1, h2, h3 {
+  font-size: inherit;
+}
+
 ul, menu {
   list-style: none;
 }

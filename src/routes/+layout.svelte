@@ -11,7 +11,7 @@
     div {
       grid-template:
         "header header" auto
-        "sidebar main" 1fr / 16rem 1fr;
+        "sidebar main" 1fr / 24rem 1fr;
     }
   }
 </style>

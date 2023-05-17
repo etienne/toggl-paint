@@ -1,12 +1,12 @@
 <script>
-  import { activeProjects, showProjectList } from '$lib/stores/stores';
+  import { projectsWithTasks, showProjectList } from '$lib/stores/stores';
 	import ProjectListItem from "./ProjectListItem.svelte";
 </script>
 
 <ul class:visibleOnMobile={showProjectList}>
-  {#each $activeProjects as p}
+  {#each $projectsWithTasks as p}
     <li>
-      <ProjectListItem name={p.name} color={p.color} id={p.id}/>
+      <ProjectListItem name={p.name} color={p.color} id={p.id} tasks={p.tasks}/>
     </li>  
   {/each}
 </ul>
@@ -16,7 +16,7 @@
     margin-top: 1rem;
     display: none;
     flex-direction: column;
-    gap: 1px;
+    gap: 0.8rem;
     padding-inline: 1rem;
   }
 
