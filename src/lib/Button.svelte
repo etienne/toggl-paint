@@ -3,9 +3,10 @@
   export let action = () => {};
   export let selected = false;
   export let wide = false;
+  export let small = false;
 </script>
 
-<button class:mobileOnly class:selected class:wide on:click={action}>
+<button class:mobileOnly class:selected class:wide class:small on:click={action}>
   <slot></slot>
 </button>
 
@@ -32,6 +33,11 @@
 
   button.wide {
     width: 100%;
+  }
+
+  button.small {
+    padding-block: calc(1px + 0.3rem);
+    font-size: 75%;
   }
 
   button > :global(*) {

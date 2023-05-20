@@ -19,6 +19,7 @@
     padding: 10px;
     border: none;
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 </style>

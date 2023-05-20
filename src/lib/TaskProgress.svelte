@@ -1,40 +1,52 @@
 <script>
   export let total = 0;
   export let current = 0;
+
+  let currentHours = Math.round(current / 3600);
+  let totalHours = Math.round(total / 3600);
+  let extraHours = 0;
+  let remainingHours = 0;
+
+  if (currentHours > totalHours) {
+    extraHours = currentHours - totalHours;    
+  } else {
+    remainingHours = totalHours - currentHours;
+  }
 </script>
 
-<div>
-  {Math.round(current/3600 * 10) / 10}/{Math.round(total/3600 * 10) / 10}h
-  <progress max={total} value={current}>{current/total * 100}%</progress>
-</div>
+<ul>
+  {#each {length: extraHours ? totalHours : currentHours} as h}
+    <li class="completed"></li>
+  {/each}
+
+  {#each {length: extraHours} as h}
+    <li class="completed extra"></li>
+  {/each}
+
+  {#each {length: remainingHours} as h}
+    <li></li>
+  {/each}
+</ul>
 
 <style>
-  div {
+  ul {
     display: flex;
+    gap: 1px;
     align-items: center;
-    font-size: 0.7rem;
-    gap: 0.5rem;
-    color: rgba(0, 0, 0, 0.3);
   }
 
-  progress {
-    width: 50px;
+  li {
+    width: 2px;
     height: 2px;
-    border: none;
+    margin-block: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
   }
 
-  progress::-webkit-progress-bar {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.07);
+  li.completed {
+    height: 8px;
   }
 
-  progress::-webkit-progress-value {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.25);
-  }
-
-  progress::-moz-progress-bar {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.1);
+  li.extra {
+    background-color: red;
   }
 </style>

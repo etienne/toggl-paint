@@ -16,5 +16,8 @@
   ul {
     display: grid;
     gap: 1px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-top: 0.4rem;
   }
 </style>

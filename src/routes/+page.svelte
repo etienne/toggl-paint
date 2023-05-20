@@ -3,6 +3,7 @@
 	import Header from '$lib/Header.svelte';
 	import Main from '$lib/Main.svelte';
   import ProjectList from '$lib/ProjectList.svelte';
+	import TaskModal from '$lib/TaskModal.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -17,3 +18,4 @@
 <Header/>
 <ProjectList/>
 <Main/>
+<TaskModal/>

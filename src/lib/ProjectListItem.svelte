@@ -1,6 +1,7 @@
 <script>
-  import { currentProjectId, currentTool } from '$lib/stores/stores';
+  import { currentProjectId, currentTool, showTaskModal } from '$lib/stores/stores';
 	import TaskList from './TaskList.svelte';
+	import Button from './Button.svelte';
 
   export let name = '';
   export let color = '#000000';
@@ -17,19 +18,34 @@
     }
   }
 
+  function newTask() {
+    $showTaskModal = true;
+    $currentProjectId = id;
+  }
 </script>
 
-<h2>
-  <span class="swatch" style="background-color: {color}"></span>
-  {name}
-</h2>
-
-{#if tasks.length}
-  <TaskList tasks={tasks}/>
-{/if}
+<section>
+  <header>
+    <h3>
+      <span class="swatch" style="background-color: {color}"></span>
+      {name}
+    </h3>
+    <Button small action={newTask}>+</Button>
+  </header>
+  
+  {#if tasks.length}
+    <TaskList tasks={tasks}/>
+  {/if}
+</section>
 
 <style>
-  h2 {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  h3 {
     display: flex;
     font-weight: normal;
     font-size: 0.75rem;
@@ -37,7 +53,6 @@
     gap: 0.5rem;
     align-items: baseline;
     color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
   }
 
   span.swatch {
