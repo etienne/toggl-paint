@@ -6,9 +6,7 @@
 
 <ul>
   {#each tasks as t}
-  <li>
     <TaskListItem name={t.name} total={t.estimated_seconds} current={t.tracked_seconds / 1000}/>
-  </li>
   {/each}
 </ul>
 

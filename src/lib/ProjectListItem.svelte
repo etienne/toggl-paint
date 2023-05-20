@@ -2,6 +2,7 @@
   import { currentProjectId, currentTool, showTaskModal } from '$lib/stores/stores';
 	import TaskList from './TaskList.svelte';
 	import Button from './Button.svelte';
+	import Plus from './icons/Plus.svelte';
 
   export let name = '';
   export let color = '#000000';
@@ -30,7 +31,7 @@
       <span class="swatch" style="background-color: {color}"></span>
       {name}
     </h3>
-    <Button small action={newTask}>+</Button>
+    <Button small borderless action={newTask}><Plus/></Button>
   </header>
   
   {#if tasks.length}
@@ -42,7 +43,7 @@
   header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
   }
 
   h3 {
@@ -63,5 +64,13 @@
     aspect-ratio: 1/1;
     border-radius: 0.1rem;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+
+  header > :global(button) {
+    opacity: 0;
+  }
+
+  header:hover > :global(button) {
+    opacity: 100;
   }
 </style>

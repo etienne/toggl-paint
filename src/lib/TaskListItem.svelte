@@ -1,25 +1,31 @@
 <script>
-	import TaskProgress from "./TaskProgress.svelte";
+	import Button from "./Button.svelte";
+  import TaskProgress from "./TaskProgress.svelte";
+	import ChevronDown from "./icons/ChevronDown.svelte";
 
   export let name = '';
   export let total = 0;
   export let current = 0;
 </script>
 
-<button>
-  {name}
-  <TaskProgress total={total} current={current} />
-</button>
+<li>
+  <Button flex wide square>
+    <span>{name}</span>
+    <TaskProgress total={total} current={current} />
+  </Button>
+  <Button small square><ChevronDown/></Button>
+</li>
 
 <style>
-  button {
-    width: 100%;
-    text-align: left;
-    background-color: #f3f3f3;
-    padding: 10px;
-    border: none;
+  li {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+  }
+
+  span {
+    flex-grow: 1;
+  }
+
+  li :global(svg) {
+    width: 11px;
   }
 </style>
