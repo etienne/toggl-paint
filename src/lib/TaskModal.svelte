@@ -25,11 +25,13 @@
       })
     });
     const taskData = await taskResponse.json();
-    console.log(taskData);
+    $showTaskModal = false;
   }
 </script>
 
 <Modal bind:showModal={$showTaskModal} action={submit} cancelAction={cancel} actionLabel="Save">
-  <Field name="name" label="Task name" bind:value={name}/>
-  <Field name="estimate" label="Time estimate" bind:value={estimate}/>
+  <Field long name="name" label="Task name" bind:value={name}/>
+  <Field short name="estimate" label="Estimate" bind:value={estimate}>
+    <span slot="after" class="text-gray-400 ml-1">hours</span>
+  </Field>
 </Modal>

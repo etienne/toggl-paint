@@ -21,13 +21,16 @@
 	bind:this={dialog}
 	on:close={() => (showModal = false)}
 	on:click|self={() => dialog.close()}
+  class="rounded-xl shadow-xl p-0"
 >
-	<div on:click|stopPropagation>
-		<slot />
-    <footer>
+	<div on:click|stopPropagation class="divide-y">
+    <div class="p-6">
+      <slot />
+    </div>
+    <footer class="flex gap-3 p-6 justify-end">
       <Button action={cancel}>Cancel</Button>
       {#if actionLabel}
-        <Button bind:action>{actionLabel}</Button>
+        <Button primary bind:action>{actionLabel}</Button>
       {/if}
     </footer>
 	</div>

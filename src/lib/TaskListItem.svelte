@@ -1,21 +1,41 @@
 <script>
+  import { currentProjectId, currentTool, showTaskModal } from '$lib/stores/stores';
 	import Button from "./Button.svelte";
 	import ButtonGroup from "./ButtonGroup.svelte";
+	import DropdownMenu from "./DropdownMenu.svelte";
+	import MenuItem from "./MenuItem.svelte";
   import TaskProgress from "./TaskProgress.svelte";
 	import ThreeDotsVertical from "./icons/ThreeDotsVertical.svelte";
 
-  export let name = '';
-  export let total = 0;
-  export let current = 0;
+  export let task = {
+    name: '',
+    estimated_seconds: 0,
+    tracked_seconds: 0,
+  };
+
+  const total = task.estimated_seconds;
+  const current = task.tracked_seconds / 1000;
+
+  let showDropdown = false;
+
+  function editTask() {
+    $showTaskModal = true;
+  }
 </script>
 
-<li class="p-1 pl-3 bg-gray-100 flex items-center justify-between group">
-  <span>{name}</span>
-  <div class="flex gap-1">
+<li class="p-1 pl-3 bg-gray-100 flex items-center justify-between group first:rounded-t-lg last:rounded-b-lg">
+  <span>{task.name}</span>
+  <div class="flex gap-1 relative">
     <TaskProgress total={total} current={current} />
     <ButtonGroup groupHover>
-      <Button><ThreeDotsVertical/></Button>
+      <Button small action={() => showDropdown = !showDropdown}><ThreeDotsVertical/></Button>
     </ButtonGroup>
+    {#if showDropdown}
+    <DropdownMenu hide={() => showDropdown = false}>
+      <MenuItem>Edit</MenuItem>
+      <MenuItem>Delete</MenuItem>
+    </DropdownMenu>
+    {/if}
   </div>
 </li>
 

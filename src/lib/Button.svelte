@@ -1,8 +1,10 @@
 <script>
   export let action = () => {};
   export let selected = false;
+  export let small = false;
+  export let primary = false;
 </script>
 
-<button class="rounded bg-gray-700/5 hover:bg-gray-700/10 p-2" on:click={action}>
+<button class={`rounded ${primary ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-gray-700/5 hover:bg-gray-700/10' } p-2 ${small ? 'px-1' : 'px-4'}`} on:click|stopPropagation={action}>
   <slot></slot>
 </button>

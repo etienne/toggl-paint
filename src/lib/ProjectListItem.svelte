@@ -33,7 +33,7 @@
       {name}
     </h3>
     <ButtonGroup groupHover>
-      <Button action={newTask}><Plus/></Button>
+      <Button small action={newTask}><Plus/></Button>
     </ButtonGroup>
   </header>
   
