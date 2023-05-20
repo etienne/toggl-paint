@@ -9,3 +9,13 @@ const headers = {
 export async function GET({ params, url }) {
   return await fetch(`https://api.track.toggl.com/api/v9/${params.path + url.search}`, { headers });
 }
+
+/** @type {import('./$types').RequestHandler} */
+export async function POST({ params, url, request }) {
+  const roger = await fetch(`https://api.track.toggl.com/api/v9/${params.path + url.search}`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(request.body),
+  });
+  return roger;
+}

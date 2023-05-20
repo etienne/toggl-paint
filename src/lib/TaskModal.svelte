@@ -1,6 +1,6 @@
 <script>
 	import { invalidateAll } from '$app/navigation';
-  import { showTaskModal, currentProjectId } from '$lib/stores/stores';
+  import { showTaskModal, currentProjectId, me } from '$lib/stores/stores';
 
   import Modal from "./Modal.svelte";
   import Field from "./Field.svelte";
@@ -14,8 +14,22 @@
   }
 
   async function submit() {
-    invalidateAll();
-    console.log('submit', name, estimate, 'hum', $currentProjectId);
+    console.log('submit>');
+    try {
+      const taskResponse = await fetch(`/api/workspaces/${$me.default_workspace_id}/projects/${$currentProjectId}/tasks`, {
+        method: 'POST',
+        body: JSON.stringify({
+          active: true,
+          estimated_seconds: +estimate * 3600,
+          name,
+          project_id: $currentProjectId,
+          workspace_id: $me.default_workspace_id,
+        })
+      });
+      const taskData = await taskResponse.json();
+    } catch (error) {
+      console.error(error);
+    }
   }
 </script>
 

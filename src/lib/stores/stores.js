@@ -1,5 +1,6 @@
 import { writable, derived } from 'svelte/store';
 
+export const me = writable(Object());
 export const projects = writable(Array());
 export const activeProjects = derived(projects, $p => $p?.filter(p => p.active === true));
 export const currentProjectId = writable(0);
