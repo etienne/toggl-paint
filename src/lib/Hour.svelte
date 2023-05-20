@@ -41,37 +41,3 @@
   on:mouseenter={handleMouseEnter}
   style={color ? `background-color: ${color}` : null}>
 </button>
-
-<style>
-  button {
-    display: block;
-    width: 100%;
-    border: 0;
-    background-color: #f0f0f0;
-    aspect-ratio: 1/1;
-  }
-
-  button::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    transition: all 0.05s;
-  }
-
-  :global(main.eyedropper) button {
-    cursor: url('/eyedropper.svg') 2 17, pointer;
-  }
-
-  :global(main.paintBucket) button {
-    cursor: url('/paintBucket.svg') 16 15, pointer;
-  }
-
-  :global(main.eraser) button {
-    cursor: url('/eraser.svg') 6 13, pointer;
-  }
-
-  button:hover::after {
-    background-color: rgba(0, 0, 0, 0.07);
-  }
-</style>

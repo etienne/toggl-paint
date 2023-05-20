@@ -21,7 +21,7 @@
       </SegmentedControl>
     </li>
     <li class="projectSelector">
-      <Button wide={true} action={() => $showProjectList = !$showProjectList}>
+      <Button action={() => $showProjectList = !$showProjectList}>
         {#if $currentProjectId === 0}
           No project selected
         {:else}
@@ -31,43 +31,3 @@
     </li>
   </menu>
 </header>
-
-<style>
-  header {
-    background-color: white;
-    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.05);
-    padding: 0.7rem 1rem;
-    position: sticky;
-    top: 0;
-    border-bottom: 1px solid #f3f3f3;
-  }
-
-  menu {
-    display: flex;
-    gap: 1rem;
-  }
-
-  img {
-    pointer-events: none;
-  }
-
-  li.projectSelector {
-    flex-grow: 1;
-  }
-
-  @media (min-width: 40rem) {
-    header {
-      grid-area: header;
-    }
-
-    menu {
-      flex-direction: column;
-      width: fit-content;
-      margin-inline: auto;
-    }
-
-    li.projectSelector {
-      display: none;
-    }
-  }
-</style>

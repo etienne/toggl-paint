@@ -22,18 +22,3 @@
   	{/each}
   </ul>
 </article>
-
-<style>
-  h2 {
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
-  }
-
-  ul {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1px;
-    border-radius: 0.5rem;
-    overflow: hidden;
-  }
-</style>

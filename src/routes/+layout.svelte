@@ -1,17 +1,7 @@
-<div>
+<script>
+  import "../app.css";
+</script>
+
+<div class="grid md:grid-cols-4 gap-4 p-4">
   <slot></slot>
 </div>
-
-<style>
-  div {
-    display: grid;
-  }
-
-  @media (min-width: 40rem) {
-    div {
-      grid-template:
-        "header header" auto
-        "sidebar main" 1fr / 24rem 1fr;
-    }
-  }
-</style>

@@ -14,39 +14,23 @@
   }
 </script>
 
-<ul>
-  {#each {length: extraHours ? totalHours : currentHours} as h}
-    <li class="completed"></li>
-  {/each}
-
-  {#each {length: extraHours} as h}
-    <li class="completed extra"></li>
-  {/each}
-
-  {#each {length: remainingHours} as h}
-    <li></li>
-  {/each}
-</ul>
+<div class="flex items-center gap-2 text-xs text-gray-300">
+  {currentHours}/{totalHours}h
+  <progress max={total} value={current} class="w-12 h-0.5">
+    {current/total * 100}%
+  </progress>
+</div>
 
 <style>
-  ul {
-    display: flex;
-    gap: 1px;
-    align-items: center;
+  progress::-webkit-progress-bar {
+    @apply rounded bg-gray-700/10;
   }
 
-  li {
-    width: 2px;
-    height: 2px;
-    margin-block: 4px;
-    background-color: rgba(0, 0, 0, 0.2);
+  progress::-webkit-progress-value {
+    @apply rounded bg-gray-700/40;
   }
 
-  li.completed {
-    height: 8px;
-  }
-
-  li.extra {
-    background-color: red;
+  progress::-moz-progress-bar {
+    @apply rounded bg-gray-700/10;
   }
 </style>

@@ -3,6 +3,7 @@
 	import TaskList from './TaskList.svelte';
 	import Button from './Button.svelte';
 	import Plus from './icons/Plus.svelte';
+	import ButtonGroup from './ButtonGroup.svelte';
 
   export let name = '';
   export let color = '#000000';
@@ -26,51 +27,17 @@
 </script>
 
 <section>
-  <header>
-    <h3>
-      <span class="swatch" style="background-color: {color}"></span>
+  <header class="flex justify-between py-1 group">
+    <h3 class="flex items-center gap-2 text-gray-500">
+      <span class="inline-block w-3 h-3 rounded-sm" style="background-color: {color}"></span>
       {name}
     </h3>
-    <Button small borderless action={newTask}><Plus/></Button>
+    <ButtonGroup groupHover>
+      <Button action={newTask}><Plus/></Button>
+    </ButtonGroup>
   </header>
   
   {#if tasks.length}
     <TaskList tasks={tasks}/>
   {/if}
 </section>
-
-<style>
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  h3 {
-    display: flex;
-    font-weight: normal;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    gap: 0.5rem;
-    align-items: baseline;
-    color: rgba(0, 0, 0, 0.5);
-  }
-
-  span.swatch {
-    position: relative;
-    top: 2px;
-    display: inline-block;
-    width: 0.75rem;
-    aspect-ratio: 1/1;
-    border-radius: 0.1rem;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
-  }
-
-  header > :global(button) {
-    opacity: 0;
-  }
-
-  header:hover > :global(button) {
-    opacity: 100;
-  }
-</style>

@@ -12,7 +12,8 @@
     return {id, date};
   });
 </script>
-<main class={$currentTool}>
+
+<main>
   <ul>
     {#each weeks as {id: weekId, date}}
     <li>
@@ -21,25 +22,3 @@
     {/each}
   </ul>
 </main>
-
-<style>
-  main {
-    padding: 1rem;
-  }
-
-  ul {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  }
-
-  @media (min-width: 40rem) {
-    main {
-      padding: 1.5rem;
-    }
-
-    ul {
-      gap: 1.5rem;
-    }
-  }
-</style>

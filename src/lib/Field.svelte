@@ -10,9 +10,3 @@
   {/if}
   <input {name} id={name} bind:value>
 </div>
-
-<style>
-  input {
-    width: 100%;
-  }
-</style>

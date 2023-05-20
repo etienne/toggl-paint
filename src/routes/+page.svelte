@@ -1,7 +1,7 @@
 <script>
   import { projects, activeProjects, currentProjectId, tasks, me } from '$lib/stores/stores';
 	import Header from '$lib/Header.svelte';
-	import Main from '$lib/Main.svelte';
+	import Weeks from '$lib/Weeks.svelte';
   import ProjectList from '$lib/ProjectList.svelte';
 	import TaskModal from '$lib/TaskModal.svelte';
 
@@ -16,7 +16,6 @@
   }
 </script>
 
-<Header/>
 <ProjectList/>
-<Main/>
+<Weeks/>
 <TaskModal/>

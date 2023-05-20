@@ -4,18 +4,8 @@
   export let tasks = Array();
 </script>
 
-<ul>
+<ul class="mb-2 rounded-lg grid gap-px overflow-hidden">
   {#each tasks as t}
     <TaskListItem name={t.name} total={t.estimated_seconds} current={t.tracked_seconds / 1000}/>
   {/each}
 </ul>
-
-<style>
-  ul {
-    display: grid;
-    gap: 1px;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    margin-top: 0.4rem;
-  }
-</style>
