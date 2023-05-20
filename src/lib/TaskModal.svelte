@@ -14,22 +14,18 @@
   }
 
   async function submit() {
-    console.log('submit>');
-    try {
-      const taskResponse = await fetch(`/api/workspaces/${$me.default_workspace_id}/projects/${$currentProjectId}/tasks`, {
-        method: 'POST',
-        body: JSON.stringify({
-          active: true,
-          estimated_seconds: +estimate * 3600,
-          name,
-          project_id: $currentProjectId,
-          workspace_id: $me.default_workspace_id,
-        })
-      });
-      const taskData = await taskResponse.json();
-    } catch (error) {
-      console.error(error);
-    }
+    const taskResponse = await fetch(`/api/workspaces/${$me.default_workspace_id}/projects/${$currentProjectId}/tasks`, {
+      method: 'POST',
+      body: JSON.stringify({
+        active: true,
+        estimated_seconds: +estimate * 3600,
+        name,
+        project_id: $currentProjectId,
+        workspace_id: $me.default_workspace_id,
+      })
+    });
+    const taskData = await taskResponse.json();
+    console.log(taskData);
   }
 </script>
 
