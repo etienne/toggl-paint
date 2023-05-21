@@ -7,11 +7,19 @@ export const currentProjectId = writable(0);
 export const currentProject = derived(
   [projects, currentProjectId],
   ([$p, $id]) => {
-    let a = $p.find(p => p.id === $id)
+    let a = $p.find(p => p.id === $id);
     console.log(a);
   }
 );
+
 export const tasks = writable(Object());
+export const currentTaskId = writable(0);
+export const currentTask = derived(
+  [tasks, currentTaskId],
+  ([$t, $id]) => {
+    return $t.data.find(t => t.id === $id);
+  }
+);
 export const activeProjectsWithTasks = derived(
   [activeProjects, tasks],
   ([$p, $t]) => {
@@ -26,6 +34,7 @@ export const activeProjectsWithTasks = derived(
     return projects;
   }
 );
+
 export const currentTool = writable('paintBucket');
 export const showProjectList = writable(false);
 export const showTaskModal = writable(false);

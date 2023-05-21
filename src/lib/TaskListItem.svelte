@@ -1,5 +1,5 @@
 <script>
-  import { currentProjectId, currentTool, showTaskModal } from '$lib/stores/stores';
+  import { currentProjectId, currentTool, showTaskModal, currentTaskId } from '$lib/stores/stores';
 	import Button from "./Button.svelte";
 	import ButtonGroup from "./ButtonGroup.svelte";
 	import DropdownMenu from "./DropdownMenu.svelte";
@@ -8,6 +8,7 @@
 	import ThreeDotsVertical from "./icons/ThreeDotsVertical.svelte";
 
   export let task = {
+    id: 0,
     name: '',
     estimated_seconds: 0,
     tracked_seconds: 0,
@@ -19,6 +20,7 @@
   let showDropdown = false;
 
   function editTask() {
+    $currentTaskId = task.id;
     $showTaskModal = true;
   }
 </script>
@@ -32,7 +34,7 @@
     </ButtonGroup>
     {#if showDropdown}
     <DropdownMenu hide={() => showDropdown = false}>
-      <MenuItem>Edit</MenuItem>
+      <MenuItem action={editTask}>Edit</MenuItem>
       <MenuItem>Delete</MenuItem>
     </DropdownMenu>
     {/if}
