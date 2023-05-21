@@ -27,10 +27,12 @@
 </script>
 
 <section>
-  <header class="flex justify-between py-1 group">
-    <h3 class="flex items-center gap-2 text-gray-500">
-      <span class="inline-block w-3 h-3 rounded-sm" style="background-color: {color}"></span>
-      {name}
+  <header class="flex justify-between rounded-lg p-1 my-1 group" class:selected style={selected ? `background-color: ${color}` : null}>
+    <h3 class="flex flex-grow">
+      <button class={`flex items-center gap-2 py-1 px-3 w-full ${selected ? `text-white` : 'text-gray-500'}`} on:click={toggleSelection}>
+        <span class="inline-block w-3 h-3 rounded-sm border-white border" style="background-color: {color}"></span>
+        {name}
+      </button>
     </h3>
     <ButtonGroup groupHover>
       <Button small action={newTask}><Plus/></Button>
@@ -41,3 +43,9 @@
     <TaskList tasks={tasks}/>
   {/if}
 </section>
+
+<style>
+  header.selected :global(svg) {
+    @apply fill-white;
+  }
+</style>

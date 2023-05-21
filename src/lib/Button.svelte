@@ -1,6 +1,5 @@
 <script>
   export let action = () => {};
-  export let selected = false;
   export let small = false;
   export let primary = false;
   export let submit = false;
