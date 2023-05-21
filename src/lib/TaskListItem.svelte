@@ -1,5 +1,5 @@
 <script>
-  import { currentProjectId, currentTool, showTaskModal, showTaskDeleteModal, currentTaskId } from '$lib/stores/stores';
+  import { currentProjectId, me, showTaskModal, showTaskDeleteModal, currentTaskId } from '$lib/stores/stores';
 	import Button from "./Button.svelte";
 	import ButtonGroup from "./ButtonGroup.svelte";
 	import DropdownMenu from "./DropdownMenu.svelte";
@@ -13,6 +13,7 @@
     estimated_seconds: 0,
     tracked_seconds: 0,
     project_id: 0,
+    workspace_id: 0,
   };
 
   const total = task.estimated_seconds;
@@ -40,12 +41,18 @@
     <ButtonGroup groupHover>
       <Button small action={() => showDropdown = !showDropdown}><ThreeDotsVertical/></Button>
     </ButtonGroup>
-    {#if showDropdown}
-    <DropdownMenu hide={() => showDropdown = false}>
-      <MenuItem action={editTask}>Edit</MenuItem>
-      <MenuItem action={deleteTask}>Delete</MenuItem>
+    <DropdownMenu hide={() => showDropdown = false} visible={showDropdown}>
+      <li>
+        <form method="POST" action="?/taskComplete">
+          <MenuItem submit>Complete</MenuItem>
+          <input type=hidden name="workspace_id" value={task.workspace_id}/>
+          <input type=hidden name="project_id" value={task.project_id}/>
+          <input type=hidden name="task_id" value={task.id}/>
+        </form>
+      </li>
+      <li><MenuItem action={editTask}>Edit</MenuItem></li>
+      <li><MenuItem action={deleteTask}>Delete</MenuItem></li>
     </DropdownMenu>
-    {/if}
   </div>
 </li>
 
