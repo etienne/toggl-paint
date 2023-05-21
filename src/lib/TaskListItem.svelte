@@ -1,5 +1,5 @@
 <script>
-  import { currentProjectId, currentTool, showTaskModal, currentTaskId } from '$lib/stores/stores';
+  import { currentProjectId, currentTool, showTaskModal, showTaskDeleteModal, currentTaskId } from '$lib/stores/stores';
 	import Button from "./Button.svelte";
 	import ButtonGroup from "./ButtonGroup.svelte";
 	import DropdownMenu from "./DropdownMenu.svelte";
@@ -12,6 +12,7 @@
     name: '',
     estimated_seconds: 0,
     tracked_seconds: 0,
+    project_id: 0,
   };
 
   const total = task.estimated_seconds;
@@ -21,7 +22,14 @@
 
   function editTask() {
     $currentTaskId = task.id;
+    $currentProjectId = task.project_id;
     $showTaskModal = true;
+  }
+
+  function deleteTask() {
+    $currentTaskId = task.id;
+    $currentProjectId = task.project_id;
+    $showTaskDeleteModal = true;
   }
 </script>
 
@@ -35,7 +43,7 @@
     {#if showDropdown}
     <DropdownMenu hide={() => showDropdown = false}>
       <MenuItem action={editTask}>Edit</MenuItem>
-      <MenuItem>Delete</MenuItem>
+      <MenuItem action={deleteTask}>Delete</MenuItem>
     </DropdownMenu>
     {/if}
   </div>

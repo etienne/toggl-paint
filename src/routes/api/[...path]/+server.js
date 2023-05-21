@@ -27,3 +27,11 @@ export async function PUT({ params, url, request }) {
     body: await request.text(),
   });
 }
+
+/** @type {import('./$types').RequestHandler} */
+export async function DELETE({ params, url }) {
+  return await fetch(`https://api.track.toggl.com/api/v9/${params.path + url.search}`, {
+    method: 'DELETE',
+    headers,
+  });
+}

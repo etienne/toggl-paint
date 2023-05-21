@@ -38,5 +38,6 @@ export const activeProjectsWithTasks = derived(
 export const currentTool = writable('paintBucket');
 export const showProjectList = writable(false);
 export const showTaskModal = writable(false);
+export const showTaskDeleteModal = writable(false);
 export const weeks = writable(Object());
 export const isDragging = writable(false);

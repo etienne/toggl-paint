@@ -4,6 +4,7 @@
 	import Weeks from '$lib/Weeks.svelte';
   import ProjectList from '$lib/ProjectList.svelte';
 	import TaskModal from '$lib/TaskModal.svelte';
+	import TaskDeleteModal from '$lib/TaskDeleteModal.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
@@ -19,3 +20,4 @@
 <ProjectList/>
 <Weeks/>
 <TaskModal/>
+<TaskDeleteModal/>
