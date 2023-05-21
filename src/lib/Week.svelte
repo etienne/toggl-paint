@@ -13,8 +13,8 @@
 </script>
 
 <article>
-  <h2>Semaine du {dateString}</h2>
-  <ul on:mouseup={handleMouseUp} on:mouseleave={handleMouseUp}>
+  <h2 class="font-bold mb-2">Semaine du {dateString}</h2>
+  <ul on:mouseup={handleMouseUp} on:mouseleave={handleMouseUp} class="rounded-lg overflow-hidden grid grid-cols-6 gap-px">
     {#each Array(28) as _, index (index)}
     <li>
       <Hour week={id} {index}/>

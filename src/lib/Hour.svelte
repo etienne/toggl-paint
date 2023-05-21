@@ -39,5 +39,7 @@
 <button
   on:mousedown={handleMouseDown}
   on:mouseenter={handleMouseEnter}
-  style={color ? `background-color: ${color}` : null}>
+  style={color ? `background-color: ${color}` : null}
+  class="block aspect-square w-full bg-gray-100 after:block after:w-full after:h-full hover:after:bg-gray-700/5"
+>
 </button>
