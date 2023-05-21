@@ -10,7 +10,7 @@
   export let id = 0;
   export let tasks = Array();
 
-  $: selected = id === $currentProjectId;
+  $: selected = id === $currentProjectId && $currentTool == 'paintBucket';
 
   function toggleSelection() {
     selected = !selected;

@@ -5,8 +5,8 @@
   import SegmentedControl from "./SegmentedControl.svelte";
 </script>
 
-<header>
-  <menu>
+<header class="col-span-full -mt-4 -mx-4 mb-4 px-4 py-2 shadow-2xl shadow-gray-700/10">
+  <menu class="flex justify-center">
     <li>
       <SegmentedControl>
         <Button selected={$currentTool == 'eyedropper'} action={() => $currentTool = 'eyedropper'}>
@@ -20,7 +20,7 @@
         </Button>
       </SegmentedControl>
     </li>
-    <li class="projectSelector">
+    <li class="md:hidden">
       <Button action={() => $showProjectList = !$showProjectList}>
         {#if $currentProjectId === 0}
           No project selected

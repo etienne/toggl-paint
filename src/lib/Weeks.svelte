@@ -13,7 +13,7 @@
   });
 </script>
 
-<main class="md:col-span-3">
+<main class={`md:col-span-3 ${$currentTool}`}>
   <ul class="grid grid-cols-[repeat(auto-fill,_minmax(18rem,_1fr))] gap-4">
     {#each weeks as {id: weekId, date}}
     <li>

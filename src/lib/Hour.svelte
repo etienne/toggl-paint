@@ -21,9 +21,10 @@
           $weeks[week][index] = null;
         }
         break;
-      default:
+      case 'eyedropper':
         if ($weeks[week]?.[index]) {
           $currentProjectId = $weeks[week]?.[index];
+          $currentTool = 'paintBucket';
         }
         break;
     }
@@ -43,3 +44,17 @@
   class="block aspect-square w-full bg-gray-100 after:block after:w-full after:h-full hover:after:bg-gray-700/5"
 >
 </button>
+
+<style>
+  :global(main.eyedropper) button {
+    cursor: url('/eyedropper.svg') 2 17, pointer;
+  }
+
+  :global(main.paintBucket) button {
+    cursor: url('/paintBucket.svg') 16 15, pointer;
+  }
+
+  :global(main.eraser) button {
+    cursor: url('/eraser.svg') 6 13, pointer;
+  }
+</style>
