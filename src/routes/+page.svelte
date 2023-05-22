@@ -11,10 +11,6 @@
   $me = data.me;
   $projects = data.projects;
   $tasks = data.tasks;
-
-  $: if ($activeProjects.length > 0) {
-    $currentProjectId = $activeProjects[0].id;
-  }
 </script>
 
 <Header/>

@@ -1,14 +1,53 @@
 <script>
-  import { currentProjectId, currentTool, showTaskModal } from '$lib/stores/stores';
+  import { currentProjectId, currentTool, showTaskModal, weeks } from '$lib/stores/stores';
 	import TaskList from './TaskList.svelte';
 	import Button from './Button.svelte';
 	import Plus from './icons/Plus.svelte';
 	import ButtonGroup from './ButtonGroup.svelte';
+	import DotGrid from './DotGrid.svelte';
 
   export let name = '';
   export let color = '#000000';
   export let id = 0;
   export let tasks = Array();
+
+  let estimatedHours = 0;
+  let completedHours = 0;
+  let plannedHours = 0;
+  let accountedHours = 0;
+
+  $: {
+    estimatedHours = 0;
+    completedHours = 0;
+    plannedHours = 0;
+
+    tasks.forEach(t => {
+      estimatedHours += t.estimated_seconds / 3600;
+      completedHours += t.tracked_seconds / 3600 / 1000;
+    })
+  
+    Object.keys($weeks).forEach(k => {
+      let date = new Date();
+      date.setHours(0, 0, 0, 0);
+      date.setDate(date.getDate() - (date.getDay() || 7) + 1);
+      let currentDate = date.valueOf();
+  
+      if (currentDate <= Number(k)) {
+        Object.keys($weeks[k]).forEach(i => {
+          const projectId = $weeks[k][i];
+          if (projectId === id) {
+            plannedHours += 1;
+          }
+        })
+      }
+    })
+  
+    estimatedHours = Math.round(estimatedHours);
+    completedHours = Math.round(completedHours);
+    plannedHours = Math.round(plannedHours);
+    accountedHours = completedHours + plannedHours;
+  }
+
 
   $: selected = id === $currentProjectId && $currentTool == 'paintBucket';
 
@@ -27,11 +66,18 @@
 </script>
 
 <section>
-  <header class="flex justify-between rounded-lg p-1 my-1 group" class:selected style={selected ? `background-color: ${color}` : null}>
-    <h3 class="flex flex-grow">
-      <button class={`flex items-center gap-2 py-1 px-3 w-full ${selected ? `text-white` : 'text-gray-500'}`} on:click={toggleSelection}>
+  <header class="flex justify-between gap-1 rounded-lg p-1 my-1 group" class:selected style={selected ? `background-color: ${color}` : null}>
+    <h3 class="flex flex-grow items-baseline">
+      <button class={`flex items-center gap-2 h-full py-1 px-3 w-full ${selected ? `text-white` : 'text-gray-500'}`} on:click={toggleSelection}>
         <span class="inline-block w-3 h-3 rounded-sm border-white border" style="background-color: {color}"></span>
         {name}
+        <div class="ml-auto text-xs text-gray-400/50">
+          {#if estimatedHours >= accountedHours}
+            <DotGrid count={estimatedHours - accountedHours} {color} reversed={selected}/>
+          {:else}
+            {accountedHours - estimatedHours} over
+          {/if}
+        </div>
       </button>
     </h3>
     <ButtonGroup groupHover>
