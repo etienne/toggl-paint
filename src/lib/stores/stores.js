@@ -1,3 +1,4 @@
+import { browser } from '$app/environment';
 import { writable, derived } from 'svelte/store';
 
 export const me = writable(Object());
@@ -39,5 +40,13 @@ export const currentTool = writable('paintBucket');
 export const showProjectList = writable(false);
 export const showTaskModal = writable(false);
 export const showTaskDeleteModal = writable(false);
-export const weeks = writable(Object());
+const weeksStringValue = browser ? window.localStorage.getItem('weeks') ?? '{}' : '{}';
+const weeksValue = JSON.parse(weeksStringValue);
+export const weeks = writable(weeksValue);
 export const isDragging = writable(false);
+
+weeks.subscribe((value) => {
+  if (browser) {
+    window.localStorage.setItem('weeks', JSON.stringify(value));
+  }
+});
