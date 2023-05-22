@@ -5,7 +5,7 @@
   import SegmentedControl from "./SegmentedControl.svelte";
 </script>
 
-<header class="col-span-full -mt-4 -mx-4 mb-4 px-4 py-2 shadow-2xl shadow-gray-700/10">
+<header class="col-span-full -mt-4 -mx-4 mb-4 px-4 py-2 bg-gray-100">
   <menu class="flex justify-center">
     <li>
       <SegmentedControl>
