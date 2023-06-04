@@ -4,7 +4,7 @@
 </script>
 
 <section>
-  <ul class:visibleOnMobile={showProjectList} class="text-sm divide-y divide-gray-100">
+  <ul class:visibleOnMobile={showProjectList} class="text-sm">
     {#each $activeProjectsWithTasks as p}
       <li>
         <ProjectListItem name={p.name} color={p.color} id={p.id} tasks={p.tasks}/>
