@@ -32,6 +32,7 @@ export const activeProjectsWithTasks = derived(
       }
       projects.push(p);
     });
+    projects.sort((a, b) => Number(b.tasks?.length > 0) - Number(a.tasks?.length > 0) );
     return projects;
   }
 );
