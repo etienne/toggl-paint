@@ -65,10 +65,10 @@
 </script>
 
 <section class="my-2 rounded-lg">
-  <header class="flex justify-between gap-1 bg-gray-200 p-1 group" class:selected style={selected ? `background-color: ${color}` : null}>
-    <h3 class="flex flex-grow items-baseline">
+  <header class="flex justify-between gap-1 group" class:selected>
+    <h3 class="flex flex-grow items-baseline bg-gray-100 rounded-md p-1.5" style:background-color={selected ? color : null}>
       <button class={`flex items-center gap-2 h-full py-1 px-2 w-full ${selected ? `text-white` : 'text-gray-500'}`} on:click={toggleSelection}>
-        <span class="inline-block w-3 h-3 rounded-sm border-gray-200 border" style="background-color: {color}"></span>
+        <span class="inline-block w-3 h-3 rounded-sm border-gray-200 border" style:background-color={color}></span>
         {name}
         <div class="ml-auto text-xs text-gray-400/50">
           {#if estimatedHours >= accountedHours}

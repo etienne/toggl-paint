@@ -34,7 +34,7 @@
   }
 </script>
 
-<li class="p-1 pl-3 bg-gray-100 flex items-center justify-between group">
+<li class="p-1 pl-3 flex items-center justify-between group">
   <span>{task.name}</span>
   <div class="flex gap-1 relative">
     <TaskProgress total={total} current={current} />

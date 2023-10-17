@@ -4,7 +4,7 @@
   export let tasks = Array();
 </script>
 
-<ul class="grid gap-px">
+<ul class="grid gap-px divide-y divide-gray-100">
   {#each tasks as task}
     <TaskListItem {task}/>
   {/each}
