@@ -9,5 +9,12 @@ export async function load({ fetch }) {
   const tasksResponse = await fetch(`/api/workspaces/${me.default_workspace_id}/tasks`);
   const tasks = await tasksResponse.json();
 
-  return { me, projects, tasks };
+  let startOfWeek = new Date();
+  startOfWeek.setHours(0, 0, 0, 0);
+  startOfWeek.setDate(startOfWeek.getDate() - (startOfWeek.getDay() || 7) + 1);
+  const timestamp = startOfWeek.valueOf() / 1000;
+  const timeEntriesResponse = await fetch(`/api/me/time_entries?since=${timestamp}`);
+  const timeEntries = await timeEntriesResponse.json();
+
+  return { me, projects, tasks, timeEntries };
 }

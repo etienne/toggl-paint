@@ -3,8 +3,8 @@
 
   export let week = 0;
   export let index = 0;
-
-  $: color = $projects.find(p => p.id === $weeks[week]?.[index])?.color;
+  export let color = '';
+  export let completion = 0.0;
 
   function handleMouseDown() {
     $isDragging = true;
@@ -40,9 +40,12 @@
 <button
   on:mousedown={handleMouseDown}
   on:mouseenter={handleMouseEnter}
-  style={color ? `background-color: ${color}` : null}
-  class="block aspect-square w-full bg-gray-100 after:block after:w-full after:h-full hover:after:bg-gray-700/5"
+  style:background-color={color}
+  class="block relative aspect-square w-full bg-gray-100 after:block after:w-full after:h-full hover:after:bg-gray-700/5"
 >
+  {#if completion}
+    <span class="block absolute bg-black/20 h-full" style:width={`${completion * 100}%`}></span>
+  {/if}
 </button>
 
 <style>

@@ -1,5 +1,5 @@
 <script>
-  import { projects, activeProjects, currentProjectId, tasks, me } from '$lib/stores/stores';
+  import { projects, tasks, me, timeEntries } from '$lib/stores/stores';
 	import Header from '$lib/Header.svelte';
 	import Weeks from '$lib/Weeks.svelte';
   import ProjectList from '$lib/ProjectList.svelte';
@@ -11,6 +11,7 @@
   $me = data.me;
   $projects = data.projects;
   $tasks = data.tasks;
+  $timeEntries = data.timeEntries;
 </script>
 
 <Header/>

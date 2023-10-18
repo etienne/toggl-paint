@@ -37,6 +37,20 @@ export const activeProjectsWithTasks = derived(
   }
 );
 
+export const timeEntries = writable(Array());
+export const hoursThisWeekByProject = derived(timeEntries, $t => {
+  let projects = Object();
+  $t.forEach(t => {
+    if (Math.sign(t.duration) === -1) return;
+    if (projects[t.project_id]) {
+      projects[t.project_id] += t.duration / 3600;
+    } else {
+      projects[t.project_id] = t.duration / 3600;
+    }
+  });
+  return projects;
+});
+
 export const currentTool = writable('paintBucket');
 export const showProjectList = writable(false);
 export const showTaskModal = writable(false);
