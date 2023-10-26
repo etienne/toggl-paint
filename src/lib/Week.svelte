@@ -46,7 +46,7 @@
   <header class="flex items-baseline justify-between">
     <h2 class="font-bold text-sm mb-2">{dateString}</h2>
     {#if isCurrentWeek}
-      <TaskProgress total={hours.filter((h = {}) => Object.keys(h).length !== 0).length} current={hours.filter((h = { completion: 0 }) => h.completion === 1).length}/>
+      <TaskProgress showAsPercents total={hours.filter((h = {}) => Object.keys(h).length !== 0).length} current={hours.filter((h = { completion: 0 }) => h.completion === 1).length}/>
     {/if}
   </header>
   <ul on:mouseup={handleMouseUp} on:mouseleave={handleMouseUp} class="rounded-lg overflow-hidden grid grid-cols-6 gap-px">

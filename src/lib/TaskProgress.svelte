@@ -1,11 +1,13 @@
 <script>
   export let total = 0;
   export let current = 0;
+  export let showAsPercents = false;
 
   let currentHours = Math.round(current);
   let totalHours = Math.round(total);
   let extraHours = 0;
   let remainingHours = 0;
+  let percents = Math.round(current/total * 100);
 
   if (currentHours > totalHours) {
     extraHours = currentHours - totalHours;    
@@ -15,7 +17,11 @@
 </script>
 
 <div class="flex items-center gap-2 text-xs text-gray-300">
-  {currentHours}/{totalHours}h
+  {#if showAsPercents}
+    {percents}%
+  {:else}
+    {currentHours}/{totalHours}h
+  {/if}
   <progress max={total} value={current} class="w-12 h-0.5">
     {current/total * 100}%
   </progress>
