@@ -2,8 +2,8 @@
   export let total = 0;
   export let current = 0;
 
-  let currentHours = Math.round(current / 3600);
-  let totalHours = Math.round(total / 3600);
+  let currentHours = Math.round(current);
+  let totalHours = Math.round(total);
   let extraHours = 0;
   let remainingHours = 0;
 

@@ -16,8 +16,8 @@
     workspace_id: 0,
   };
 
-  const total = task.estimated_seconds;
-  const current = task.tracked_seconds / 1000;
+  const total = task.estimated_seconds / 3600;
+  const current = task.tracked_seconds / 1000 / 3600;
 
   let showDropdown = false;
 
