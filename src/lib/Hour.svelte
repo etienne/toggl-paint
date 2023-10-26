@@ -44,7 +44,7 @@
   class="block relative aspect-square w-full bg-gray-100 after:block after:w-full after:h-full hover:after:bg-gray-700/5"
 >
   {#if completion}
-    <span class="block absolute top-px left-px bg-[url(/pattern.svg)]" style:width={`calc(${completion * 100}% - 2px)`} style:height="calc(100% - 2px)"></span>
+    <span class={`block bottom-[8%] left-[8%] origin-left -rotate-45 absolute h-px border-b border-white ${completion < 1 ? 'border-dashed' : ''}`} style:width={`${completion * 116}%`}></span>
   {/if}
 </button>
 
