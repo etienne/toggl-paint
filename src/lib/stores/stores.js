@@ -5,20 +5,13 @@ export const me = writable(Object());
 export const projects = writable(Array());
 export const activeProjects = derived(projects, $p => $p?.filter(p => p.active === true));
 export const currentProjectId = writable(0);
-export const currentProject = derived(
-  [projects, currentProjectId],
-  ([$p, $id]) => {
-    let a = $p.find(p => p.id === $id);
-    console.log(a);
-  }
-);
 
 export const tasks = writable(Object());
 export const currentTaskId = writable(0);
 export const currentTask = derived(
   [tasks, currentTaskId],
   ([$t, $id]) => {
-    return $t.data.find(t => t.id === $id);
+    return $t.data.find((t = { id: 0 }) => t.id === $id);
   }
 );
 export const activeProjectsWithTasks = derived(
@@ -26,7 +19,7 @@ export const activeProjectsWithTasks = derived(
   ([$p, $t]) => {
     let projects = Array();
     $p.forEach(p => {
-      let tasks = $t.data?.filter(t => t.project_id === p.id);
+      let tasks = $t.data?.filter((t = { project_id: 0 }) => t.project_id === p.id);
       if (tasks?.length) {
         p.tasks = tasks;
       }

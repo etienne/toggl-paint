@@ -1,5 +1,5 @@
 <script>
-  import { currentProjectId, currentTool, showTaskModal, weeks } from '$lib/stores/stores';
+  import { currentProjectId, currentTool, showTaskModal, weeks, hoursThisWeekByProject } from '$lib/stores/stores';
 	import TaskList from './TaskList.svelte';
 	import Button from './Button.svelte';
 	import Plus from './icons/Plus.svelte';
@@ -43,10 +43,9 @@
   
     estimatedHours = Math.round(estimatedHours);
     completedHours = Math.round(completedHours);
-    plannedHours = Math.round(plannedHours);
+    plannedHours = Math.round(plannedHours - ($hoursThisWeekByProject[id] || 0));
     accountedHours = completedHours + plannedHours;
   }
-
 
   $: selected = id === $currentProjectId && $currentTool == 'paintBucket';
 
@@ -73,12 +72,14 @@
         <div class="ml-auto text-xs text-gray-400/50">
           {#if estimatedHours >= accountedHours}
             {#if estimatedHours > accountedHours}
-              <span class={`rounded-full py-1 px-2 text-xs`} style:background-color={selected ? 'white' : color} style:color={selected ? color : 'white'}>
+              <span class="rounded-full py-1 px-2 text-xs" style:background-color={selected ? 'white' : color} style:color={selected ? color : 'white'}>
                 {estimatedHours - accountedHours}
               </span>
             {/if}
           {:else}
-            {accountedHours - estimatedHours} over
+            <span class="rounded-full py-1 px-2 text-xs border" style:border-color={selected ? 'white' : color} style:color={selected ? 'white' : color}>
+              {accountedHours - estimatedHours} over
+            </span>
           {/if}
         </div>
       </button>
