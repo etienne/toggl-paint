@@ -10,6 +10,9 @@
   let hoursCountedByProject = Object();
   let hours = Object();
 
+  let totalHours = 0;
+  let currentHours = 0;
+
   let dateString = isCurrentWeek
     ? 'Cette semaine'
     : `Semaine du ${date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long' })}`;
@@ -35,6 +38,12 @@
       }
       return {};
     });
+
+    totalHours = hours.filter((h = {}) => Object.keys(h).length !== 0).length;
+    currentHours = Object.keys(hours).map(h => Number(h)).reduce((accumulator, currentValue) => {
+      console.log(hours[currentValue]);
+      return accumulator + Number(hours[currentValue].completion || 0);
+    });
   }
   
   function handleMouseUp() {
@@ -46,7 +55,7 @@
   <header class="flex items-baseline justify-between">
     <h2 class="font-bold text-sm mb-2">{dateString}</h2>
     {#if isCurrentWeek}
-      <TaskProgress showAsPercents total={hours.filter((h = {}) => Object.keys(h).length !== 0).length} current={hours.filter((h = { completion: 0 }) => h.completion === 1).length}/>
+      <TaskProgress showAsPercents total={totalHours} current={currentHours}/>
     {/if}
   </header>
   <ul on:mouseup={handleMouseUp} on:mouseleave={handleMouseUp} class="rounded-lg overflow-hidden grid grid-cols-6 gap-px">
