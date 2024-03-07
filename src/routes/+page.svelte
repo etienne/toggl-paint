@@ -1,6 +1,6 @@
 <script>
-	import Header from '$lib/Header.svelte';
   import { projects, tasks, me, timeEntries, currentTimeEntry } from '$lib/stores/stores';
+	import Menu from '$lib/Menu.svelte';
 	import Weeks from '$lib/Weeks.svelte';
   import ProjectList from '$lib/ProjectList.svelte';
 	import TaskModal from '$lib/TaskModal.svelte';
@@ -15,8 +15,17 @@
   $currentTimeEntry = data.currentTimeEntry;
 </script>
 
-<Header/>
-<ProjectList/>
-<Weeks/>
+<div class="grid grid-cols-[396px,1fr] grid-rows-[auto,1fr] h-screen overflow-hidden gap-x-4">
+  <header class="col-span-full">
+    <Menu/>
+  </header>
+  <aside class="h-full overflow-y-auto pt-4 pl-4">
+    <ProjectList/>
+  </aside>
+  <main class="h-full overflow-y-scroll pt-4 pr-4 pb-4">
+    <Weeks/>
+  </main>
+</div>
+
 <TaskModal/>
 <TaskDeleteModal/>

@@ -57,15 +57,15 @@
 </button>
 
 <style>
-  :global(main.eyedropper) button {
+  :global(ul.eyedropper) button {
     cursor: url('/eyedropper.svg') 2 17, pointer;
   }
 
-  :global(main.paintBucket) button {
+  :global(ul.paintBucket) button {
     cursor: url('/paintBucket.svg') 16 15, pointer;
   }
 
-  :global(main.eraser) button {
+  :global(ul.eraser) button {
     cursor: url('/eraser.svg') 6 13, pointer;
   }
 </style>
