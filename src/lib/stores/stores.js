@@ -44,6 +44,8 @@ export const hoursThisWeekByProject = derived(timeEntries, $t => {
   return projects;
 });
 
+export const currentTimeEntry = writable(Object());
+
 export const currentTool = writable('paintBucket');
 export const showProjectList = writable(false);
 export const showTaskModal = writable(false);

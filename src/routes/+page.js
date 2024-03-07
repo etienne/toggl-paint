@@ -12,9 +12,14 @@ export async function load({ fetch }) {
   let startOfWeek = new Date();
   startOfWeek.setHours(0, 0, 0, 0);
   startOfWeek.setDate(startOfWeek.getDate() - (startOfWeek.getDay() || 7) + 1);
-  const timestamp = startOfWeek.valueOf() / 1000;
-  const timeEntriesResponse = await fetch(`/api/me/time_entries?since=${timestamp}`);
+  const startDate = startOfWeek.toISOString();
+  const endDate = '9999-09-09'; // Ugh
+
+  const timeEntriesResponse = await fetch(`/api/me/time_entries?start_date=${startDate}&end_date=${endDate}`);
   const timeEntries = await timeEntriesResponse.json();
 
-  return { me, projects, tasks, timeEntries };
+  const currentTimeEntryResponse = await fetch("/api/me/time_entries/current");
+  const currentTimeEntry = await currentTimeEntryResponse.json();
+
+  return { me, projects, tasks, timeEntries, currentTimeEntry };
 }
