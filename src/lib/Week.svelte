@@ -34,6 +34,8 @@
         return {
           color: project.color,
           completion: isCurrentWeek ? completion : 0,
+          showProjectName: hoursCountedByProject[project.id] === 1,
+          projectName: project.name,
         }
       }
       return {};
@@ -59,9 +61,9 @@
     {/if}
   </header>
   <ul on:mouseup={handleMouseUp} on:mouseleave={handleMouseUp} class="rounded-lg overflow-hidden grid grid-cols-6 gap-px">
-    {#each hours as {color, completion}, index}
+    {#each hours as {color, completion, projectName, showProjectName}, index}
     <li>
-      <Hour week={id} {index} {color} {completion} />
+      <Hour week={id} {index} {color} {completion} {showProjectName} {projectName} />
     </li>
   	{/each}
   </ul>

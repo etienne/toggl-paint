@@ -5,6 +5,8 @@
   export let index = 0;
   export let color = '';
   export let completion = 0.0;
+  export let showProjectName = false;
+  export let projectName = '';
 
   function handleMouseDown() {
     $isDragging = true;
@@ -46,6 +48,12 @@
   {#if completion}
     <span class={`block bottom-[8%] left-[8%] origin-left -rotate-45 absolute h-px border-b border-white ${completion < 1 ? 'border-dashed' : ''}`} style:width={`${completion * 116}%`}></span>
   {/if}
+
+  {#if showProjectName}
+    <span class="absolute top-1 left-1 px-1 py-0.5 text-left text-xs rounded-sm leading-4 w-max z-10 text-white bg-black/20">
+      {projectName}
+    </span>
+  {/if}  
 </button>
 
 <style>
