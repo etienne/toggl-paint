@@ -41,11 +41,14 @@
       return {};
     });
 
-    totalHours = hours.filter((h = {}) => Object.keys(h).length !== 0).length;
-    currentHours = Object.keys(hours).map(h => Number(h)).reduce((accumulator, currentValue) => {
-      console.log(hours[currentValue]);
-      return accumulator + Number(hours[currentValue].completion || 0);
-    });
+    if (isCurrentWeek) {
+      totalHours = hours.filter((h = {}) => Object.keys(h).length !== 0).length;
+      currentHours = 0;
+      Object.keys(hours).forEach(h => {
+        currentHours += hours[h].completion || 0;
+      })
+    }
+
   }
   
   function handleMouseUp() {
