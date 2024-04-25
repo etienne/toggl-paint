@@ -48,10 +48,29 @@
         currentHours += hours[h].completion || 0;
       })
     }
+  }
 
+  function sortWeek() {
+    let hoursByProjectId = Object.values($weeks[id]);
+    let hoursByProject = hoursByProjectId.map(projectId => $projects.find(p => p.id === projectId) || null);
+    let hoursBySortedProject = hoursByProject.sort((a, b) => {
+      if (a === null && b === null) {
+        return 0;
+      }
+      if (a === null) {
+        return 1;
+      }
+      if (b === null) {
+        return -1;
+      }
+      return a.name.localeCompare(b.name);
+    });
+    let hoursBySortedProjectId = hoursBySortedProject.map(p => p?.id || null);
+    $weeks[id] = hoursBySortedProjectId;
   }
   
   function handleMouseUp() {
+    sortWeek();
     $isDragging = false;
   }
 </script>
